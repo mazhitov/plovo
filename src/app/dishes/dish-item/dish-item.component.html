@@ -1,0 +1,17 @@
+<div class="card mb-2">
+  <div class="row no-gutters">
+    <div class="col-sm-4">
+      <img
+        [src]="dish.imageUrl" alt="{{ dish.name }}"
+        style="max-width: 100%"
+      />
+    </div>
+    <div class="col-sm-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ dish.name }}</h5>
+        <p class="card-text small">{{ dish.description }}</p>
+        <div class="card-text">{{ dish.price }} KGS</div>
+      </div>
+    </div>
+  </div>
+</div>

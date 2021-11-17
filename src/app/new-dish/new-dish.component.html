@@ -1,0 +1,47 @@
+<h4>Add new dish</h4>
+
+<form (ngSubmit)="createDish()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      class="form-control"
+      #nameInput
+    />
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea
+      name="description"
+      id="description"
+      class="form-control"
+      #descriptionInput
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label for="imageUrl">Image</label>
+    <input
+      type="text"
+      name="imageUrl"
+      id="imageUrl"
+      class="form-control"
+      #imageUrlInput
+    />
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input
+      type="text"
+      name="price"
+      id="price"
+      class="form-control"
+      #priceInput
+    />
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary"
+  >Create</button>
+</form>
