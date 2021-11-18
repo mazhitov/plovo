@@ -4,13 +4,15 @@
 <main class="container-fluid">
   <div class="row mt-2">
     <div class="col-4">
-      <app-new-dish (newDish)="onNewDish($event)"></app-new-dish>
+      <app-new-dish></app-new-dish>
     </div>
     <div class="col-4">
-      <app-dishes [dishes]="dishes"></app-dishes>
+      <app-dishes
+        (dishAddedToCart)="onDishAddedToCart($event)"
+      ></app-dishes>
     </div>
     <div class="col-4">
-      <app-cart></app-cart>
+      <app-cart [cartItems]="cartItems"></app-cart>
     </div>
   </div>
 </main>

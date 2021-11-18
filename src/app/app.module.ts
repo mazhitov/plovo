@@ -9,6 +9,7 @@ import { DishItemComponent } from './dishes/dish-item/dish-item.component';
 import { CartComponent } from './cart/cart.component';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
 import { FormsModule } from '@angular/forms';
+import { DishService } from './shared/dish.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [DishService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

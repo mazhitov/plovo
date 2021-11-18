@@ -1,8 +1,9 @@
 <h4>Cart</h4>
 
-<app-cart-item></app-cart-item>
-<app-cart-item></app-cart-item>
-<app-cart-item></app-cart-item>
+<app-cart-item
+  *ngFor="let cartItem of cartItems"
+  [cartItem]="cartItem"
+></app-cart-item>
 
 <div class="card border-0 p-2">
   <div class="row">
@@ -10,7 +11,7 @@
       Total:
     </div>
     <div class="col-4 text-right">
-      <strong>750</strong> KGS
+      <strong>{{ getTotalPrice() }}</strong> KGS
     </div>
   </div>
 </div>
