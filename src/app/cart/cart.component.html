@@ -1,17 +1,25 @@
 <h4>Cart</h4>
 
-<app-cart-item
-  *ngFor="let cartItem of cartItems"
-  [cartItem]="cartItem"
-></app-cart-item>
+<ng-container *ngIf="cartItems.length > 0; else emptyCart">
+  <app-cart-item
+    *ngFor="let cartItem of cartItems"
+    [cartItem]="cartItem"
+  ></app-cart-item>
 
-<div class="card border-0 p-2">
-  <div class="row">
-    <div class="col text-right">
-      Total:
-    </div>
-    <div class="col-4 text-right">
-      <strong>{{ getTotalPrice() }}</strong> KGS
+  <div class="card border-0 p-2">
+    <div class="row">
+      <div class="col text-right">
+        Total:
+      </div>
+      <div class="col-4 text-right">
+        <strong>{{ getTotalPrice() }}</strong> KGS
+      </div>
     </div>
   </div>
-</div>
+</ng-container>
+
+<ng-template #emptyCart>
+  <div class="alert alert-primary">
+    Cart is empty. Please add some items!
+  </div>
+</ng-template>

@@ -22,6 +22,6 @@ export class NewDishComponent {
     const price = parseFloat(this.priceInput.nativeElement.value);
 
     const dish = new Dish(name, description, imageUrl, price);
-    this.dishService.dishes.push(dish);
+    this.dishService.addDish(dish);
   }
 }

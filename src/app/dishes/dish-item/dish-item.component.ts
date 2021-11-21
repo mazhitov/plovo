@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Dish } from '../../shared/dish.model';
+import { CartService } from '../../shared/cart.service';
 
 @Component({
   selector: 'app-dish-item',
@@ -9,9 +10,9 @@ import { Dish } from '../../shared/dish.model';
 export class DishItemComponent {
   @Input() dish!: Dish;
 
-  @Output() dishClick = new EventEmitter<Dish>();
+  constructor(private cartService: CartService) {}
 
   onClick() {
-    this.dishClick.emit(this.dish);
+    this.cartService.addDishToCart(this.dish);
   }
 }

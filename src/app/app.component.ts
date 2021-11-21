@@ -8,10 +8,4 @@ import { CartItem } from './shared/cart-item.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  cartItems: CartItem[] = [];
-
-  onDishAddedToCart(dish: Dish) {
-    const cartItem = new CartItem(dish);
-    this.cartItems.push(cartItem);
-  }
 }

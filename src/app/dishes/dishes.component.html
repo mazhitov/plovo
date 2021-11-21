@@ -1,7 +1,6 @@
 <h4>Dishes</h4>
 
 <app-dish-item
-  *ngFor="let dish of dishService.dishes"
+  *ngFor="let dish of dishes"
   [dish]="dish"
-  (dishClick)="onDishClick($event)"
 ></app-dish-item>
