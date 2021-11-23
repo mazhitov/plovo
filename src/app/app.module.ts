@@ -11,6 +11,8 @@ import { CartComponent } from './cart/cart.component';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
 import { DishService } from './shared/dish.service';
 import { CartService } from './shared/cart.service';
+import { ModalComponent } from './ui/modal/modal.component';
+import { ShadowHoverDirective } from './directives/shadow-hover.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CartService } from './shared/cart.service';
     DishesComponent,
     DishItemComponent,
     CartComponent,
-    CartItemComponent
+    CartItemComponent,
+    ModalComponent,
+    ShadowHoverDirective,
   ],
   imports: [
     BrowserModule,

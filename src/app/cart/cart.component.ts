@@ -9,6 +9,7 @@ import { CartService } from '../shared/cart.service';
 })
 export class CartComponent implements OnInit {
   cartItems!: CartItem[];
+  modalOpen = false;
 
   constructor(private cartService: CartService) {}
 
@@ -23,5 +24,13 @@ export class CartComponent implements OnInit {
     return this.cartItems.reduce((sum, cartItem) => {
       return sum + cartItem.getPrice();
     }, 0);
+  }
+
+  openCheckoutModal() {
+    this.modalOpen = true;
+  }
+
+  closeCheckoutModal() {
+    this.modalOpen = false;
   }
 }
