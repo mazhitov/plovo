@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from '../shared/cart-item.model';
 import { CartService } from '../shared/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +12,10 @@ export class CartComponent implements OnInit {
   cartItems!: CartItem[];
   modalOpen = false;
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getItems();
@@ -32,5 +36,9 @@ export class CartComponent implements OnInit {
 
   closeCheckoutModal() {
     this.modalOpen = false;
+  }
+
+  continue() {
+    void this.router.navigate(['/checkout']);
   }
 }

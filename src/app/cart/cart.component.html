@@ -38,6 +38,20 @@
 >
   <div class="modal-body">
     <h3>Order preview</h3>
-    <p>Do you want to checkout? Yes/no</p>
+    <p>
+      You are about to order for a total of:
+      <strong>{{ getTotalPrice() }} KGS</strong>
+    </p>
+    <p>Do you want to continue?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="btn btn-danger"
+      (click)="closeCheckoutModal()"
+    >Cancel</button>
+    <button
+      class="btn btn-success"
+      (click)="continue()"
+    >Continue</button>
   </div>
 </app-modal>

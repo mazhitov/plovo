@@ -13,6 +13,15 @@ import { DishService } from './shared/dish.service';
 import { CartService } from './shared/cart.service';
 import { ModalComponent } from './ui/modal/modal.component';
 import { ShadowHoverDirective } from './directives/shadow-hover.directive';
+import { HomeComponent } from './home/home.component';
+import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './not-found.component';
+
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'dishes/new', component: NewDishComponent},
+  {path: '**', component: NotFoundComponent},
+];
 
 @NgModule({
   declarations: [
@@ -25,10 +34,13 @@ import { ShadowHoverDirective } from './directives/shadow-hover.directive';
     CartItemComponent,
     ModalComponent,
     ShadowHoverDirective,
+    HomeComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [DishService, CartService],
   bootstrap: [AppComponent]

@@ -1,6 +1,4 @@
-import {Component} from '@angular/core';
-import {Dish} from './shared/dish.model';
-import { CartItem } from './shared/cart-item.model';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +6,9 @@ import { CartItem } from './shared/cart-item.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  location = 'home';
+
+  onNavigate(where: string) {
+    this.location = where;
+  }
 }

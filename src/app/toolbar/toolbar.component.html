@@ -1,3 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Plovo</a>
+  <a class="navbar-brand" routerLink="/">Plovo</a>
+
+  <div class="navbar-expand">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a routerLink="/dishes/new" class="nav-link">New dish</a>
+      </li>
+    </ul>
+  </div>
 </nav>
