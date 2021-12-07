@@ -1,0 +1,16 @@
+<div class="row mt-2">
+  <div class="col">
+    <h4>Manage dishes</h4>
+    <div class="list-group">
+      <a
+        *ngFor="let dish of dishes; let i = index"
+        class="list-group-item list-group-item-action"
+        [routerLink]="[i]"
+        routerLinkActive="active"
+      >{{ dish.name }}</a>
+    </div>
+  </div>
+  <div class="col">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -13,6 +13,10 @@ export class DishService {
     return this.dishes.slice();
   }
 
+  getDish(index: number) {
+    return this.dishes[index];
+  }
+
   addDish(dish: Dish) {
     this.dishes.push(dish);
     this.dishesChange.emit(this.dishes);

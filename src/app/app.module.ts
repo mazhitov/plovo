@@ -14,14 +14,11 @@ import { CartService } from './shared/cart.service';
 import { ModalComponent } from './ui/modal/modal.component';
 import { ShadowHoverDirective } from './directives/shadow-hover.directive';
 import { HomeComponent } from './home/home.component';
-import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './not-found.component';
+import { ManageDishesComponent } from './dishes/manage-dishes/manage-dishes.component';
+import { DishDetailsComponent } from './dishes/manage-dishes/dish-details/dish-details.component';
+import { AppRoutingModule } from './app-routing.module';
 
-const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'dishes/new', component: NewDishComponent},
-  {path: '**', component: NotFoundComponent},
-];
 
 @NgModule({
   declarations: [
@@ -36,11 +33,13 @@ const routes: Routes = [
     ShadowHoverDirective,
     HomeComponent,
     NotFoundComponent,
+    ManageDishesComponent,
+    DishDetailsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule
   ],
   providers: [DishService, CartService],
   bootstrap: [AppComponent]

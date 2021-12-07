@@ -1,0 +1,15 @@
+<div class="row mt-2">
+  <div class="col">
+    <h4>Dish details</h4>
+    <h5>{{ dish.name }}</h5>
+    <img [src]="dish.imageUrl" alt="{{ dish.name }}" class="img-fluid"/>
+    <p>{{ dish.description }}</p>
+    <p>Price: <strong>{{ dish.price }} KGS</strong></p>
+
+    <hr/>
+
+    <p>Manage dish:</p>
+    <button class="btn btn-secondary">Edit</button>&nbsp;
+    <button class="btn btn-danger">Delete</button>
+  </div>
+</div>
