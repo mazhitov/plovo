@@ -18,6 +18,7 @@ import { NotFoundComponent } from './not-found.component';
 import { ManageDishesComponent } from './dishes/manage-dishes/manage-dishes.component';
 import { DishDetailsComponent } from './dishes/manage-dishes/dish-details/dish-details.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [DishService, CartService],

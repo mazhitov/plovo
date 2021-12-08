@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Dish } from '../shared/dish.model';
 import { DishService } from '../shared/dish.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-new-dish',
@@ -13,7 +13,10 @@ export class NewDishComponent {
   @ViewChild('imageUrlInput') imageUrlInput!: ElementRef;
   @ViewChild('priceInput') priceInput!: ElementRef;
 
-  constructor(public dishService: DishService) {}
+  constructor(
+    public dishService: DishService,
+    public http: HttpClient,
+  ) {}
 
   createDish() {
     const name: string = this.nameInput.nativeElement.value;
@@ -21,7 +24,10 @@ export class NewDishComponent {
     const imageUrl: string = this.imageUrlInput.nativeElement.value;
     const price = parseFloat(this.priceInput.nativeElement.value);
 
-    const dish = new Dish(name, description, imageUrl, price);
-    this.dishService.addDish(dish);
+    const body = {name, description, imageUrl, price};
+    this.http.post('https://plovo-js13-default-rtdb.firebaseio.com/dishes.json', body).subscribe();
+
+    // const dish = new Dish(name, description, imageUrl, price);
+    // this.dishService.addDish(dish);
   }
 }
