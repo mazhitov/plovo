@@ -1,6 +1,9 @@
 <h4>Dishes</h4>
 
-<app-dish-item
-  *ngFor="let dish of dishes"
-  [dish]="dish"
-></app-dish-item>
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="!loading">
+  <app-dish-item
+    *ngFor="let dish of dishes"
+    [dish]="dish"
+  ></app-dish-item>
+</div>

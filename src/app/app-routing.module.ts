@@ -10,9 +10,9 @@ import { NotFoundComponent } from './not-found.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'dishes', component: ManageDishesComponent, children: [
-      {path: '', component: EmptyDishComponent},
-      {path: 'new', component: NewDishComponent},
-      {path: ':id', component: DishDetailsComponent}
+      {path: '', component: EmptyDishComponent}, // dishes/
+      {path: 'new', component: NewDishComponent}, // dishes/new
+      {path: ':id', component: DishDetailsComponent} // dishes/:id
     ]},
   {path: '**', component: NotFoundComponent},
 ];

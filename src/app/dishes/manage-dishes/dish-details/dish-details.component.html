@@ -1,5 +1,5 @@
 <div class="row mt-2">
-  <div class="col">
+  <div class="col" *ngIf="dish">
     <h4>Dish details</h4>
     <h5>{{ dish.name }}</h5>
     <img [src]="dish.imageUrl" alt="{{ dish.name }}" class="img-fluid"/>

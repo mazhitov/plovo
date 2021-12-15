@@ -11,15 +11,22 @@ import { map } from 'rxjs/operators';
 })
 export class DishesComponent implements OnInit {
   dishes!: Dish[];
+  loading = false;
+
   constructor(
     private dishService: DishService,
     private http: HttpClient,
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
-
-    this.http.get<{[id: string]: Dish}>('https://plovo-js13-default-rtdb.firebaseio.com/dishes.json')
+    this.loading = true;
+    this.http.get<{ [id: string]: Dish }>('https://plovo-js13-default-rtdb.firebaseio.com/dishes.json')
       .pipe(map(result => {
+        if (result === null) {
+          return [];
+        }
+
         return Object.keys(result).map(id => {
           const dishData = result[id];
           return new Dish(id, dishData.name, dishData.description, dishData.imageUrl, dishData.price);
@@ -27,6 +34,7 @@ export class DishesComponent implements OnInit {
       }))
       .subscribe(dishes => {
         this.dishes = dishes;
+        this.loading = false;
       });
 
     // this.dishes = this.dishService.getDishes();

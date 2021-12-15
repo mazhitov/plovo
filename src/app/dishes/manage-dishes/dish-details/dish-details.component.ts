@@ -9,7 +9,7 @@ import { Dish } from '../../../shared/dish.model';
   styleUrls: ['./dish-details.component.css']
 })
 export class DishDetailsComponent implements OnInit {
-  dish!: Dish;
+  dish: Dish | null = null;
 
   constructor(
     private route: ActivatedRoute,
