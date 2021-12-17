@@ -1,24 +1,73 @@
 import { Dish } from './dish.model';
-import { EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
+@Injectable()
 export class DishService {
-  dishesChange = new EventEmitter<Dish[]>();
+  dishesChange = new Subject<Dish[]>();
+  dishesFetching = new Subject<boolean>();
+  dishUploading = new Subject<boolean>();
 
-  private dishes: Dish[] = [
-    new Dish('pilaf1', 'Pilaf', 'Very tasty pilaf', 'https://krollskorner.com/wp-content/uploads/2019/10/riceblog8.jpg', 250),
-    new Dish('pilaf2', 'Another pilaf', 'Another tasty pilaf', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqtY9mM4oD1Nqmw9TARQOpgSqfKdaN5LMN6g&usqp=CAU', 200),
-  ];
+  private dishes: Dish[] = [];
+
+  constructor(private http: HttpClient) {}
 
   getDishes() {
     return this.dishes.slice();
+  }
+
+  fetchDishes() {
+    this.dishesFetching.next(true);
+    this.http.get<{ [id: string]: Dish }>('https://plovo-js13-default-rtdb.firebaseio.com/dishes.json')
+      .pipe(map(result => {
+        if (result === null) {
+          return [];
+        }
+
+        return Object.keys(result).map(id => {
+          const dishData = result[id];
+          return new Dish(id, dishData.name, dishData.description, dishData.imageUrl, dishData.price);
+        });
+      }))
+      .subscribe(dishes => {
+        this.dishes = dishes;
+        this.dishesChange.next(this.dishes.slice());
+        this.dishesFetching.next(false);
+      }, () => {
+        this.dishesFetching.next(false);
+      });
   }
 
   getDish(index: number) {
     return this.dishes[index];
   }
 
+  fetchDish(id: string) {
+    return this.http.get<Dish>(`https://plovo-js13-default-rtdb.firebaseio.com/dishes/${id}.json`).pipe(
+      map(result => {
+        return new Dish(id, result.name, result.description, result.imageUrl, result.price);
+      }),
+    );
+  }
+
   addDish(dish: Dish) {
-    this.dishes.push(dish);
-    this.dishesChange.emit(this.dishes);
+    const body = {
+      name: dish.name,
+      description: dish.description,
+      imageUrl: dish.imageUrl,
+      price: dish.price,
+    };
+
+    this.dishUploading.next(true);
+
+    return this.http.post('https://plovo-js13-default-rtdb.firebaseio.com/dishes.json', body).pipe(
+      tap(() => {
+        this.dishUploading.next(false);
+      }, () => {
+        this.dishUploading.next(false);
+      })
+    );
   }
 }

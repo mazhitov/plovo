@@ -1,5 +1,5 @@
 <div class="row mt-2">
-  <div class="col-6">
+  <div class="col">
     <h4>Add new dish</h4>
 
     <form (ngSubmit)="createDish()">
@@ -45,7 +45,14 @@
       <button
         type="submit"
         class="btn btn-primary"
-      >Create
+        [disabled]="isUploading"
+      >
+        <span *ngIf="!isUploading">
+          Create
+        </span>
+        <span *ngIf="isUploading" class="spinner-border spinner-border-sm">
+          <span class="sr-only">Loading...</span>
+        </span>
       </button>
     </form>
   </div>

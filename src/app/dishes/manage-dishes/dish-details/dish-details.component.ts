@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { DishService } from '../../../shared/dish.service';
+import { ActivatedRoute } from '@angular/router';
 import { Dish } from '../../../shared/dish.model';
 
 @Component({
@@ -13,14 +12,11 @@ export class DishDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dishService: DishService
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      const dishId = parseInt(params['id']);
-      this.dish = this.dishService.getDish(dishId);
+    this.route.data.subscribe(data => {
+      this.dish = <Dish>data.dish;
     });
   }
-
 }

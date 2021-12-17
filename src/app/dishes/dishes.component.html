@@ -1,9 +1,14 @@
 <h4>Dishes</h4>
 
-<div *ngIf="loading">Loading...</div>
-<div *ngIf="!loading">
+<ng-container *ngIf="!loading; else loadingSpinner">
   <app-dish-item
     *ngFor="let dish of dishes"
     [dish]="dish"
   ></app-dish-item>
-</div>
+</ng-container>
+
+<ng-template #loadingSpinner>
+  <div *ngIf="loading" class="spinner-border">
+    <span class="sr-only">Loading...</span>
+  </div>
+</ng-template>
