@@ -9,7 +9,18 @@
     <hr/>
 
     <p>Manage dish:</p>
-    <button class="btn btn-secondary">Edit</button>&nbsp;
-    <button class="btn btn-danger">Delete</button>
+    <a class="btn btn-secondary" [routerLink]="['edit']">Edit</a>&nbsp;
+    <button
+      class="btn btn-danger"
+      (click)="onRemove()"
+      [disabled]="isRemoving"
+    >
+      <span *ngIf="!isRemoving">
+        Delete
+      </span>
+      <span *ngIf="isRemoving" class="spinner-border spinner-border-sm">
+        <span class="sr-only">Removing...</span>
+      </span>
+    </button>
   </div>
 </div>

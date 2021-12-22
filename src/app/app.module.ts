@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { NewDishComponent } from './new-dish/new-dish.component';
+import { EditDishComponent } from './dishes/manage-dishes/edit-dish/edit-dish.component';
 import { DishesComponent } from './dishes/dishes.component';
 import { DishItemComponent } from './dishes/dish-item/dish-item.component';
 import { CartComponent } from './cart/cart.component';
@@ -25,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     ToolbarComponent,
-    NewDishComponent,
+    EditDishComponent,
     DishesComponent,
     DishItemComponent,
     CartComponent,

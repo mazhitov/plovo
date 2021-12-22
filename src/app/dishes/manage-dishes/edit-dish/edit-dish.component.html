@@ -1,8 +1,8 @@
 <div class="row mt-2">
   <div class="col">
-    <h4>Add new dish</h4>
+    <h4>{{ isEdit ? 'Edit dish' : 'Add new dish' }}</h4>
 
-    <form (ngSubmit)="createDish()">
+    <form (ngSubmit)="saveDish()" #f="ngForm">
       <div class="form-group">
         <label for="name">Name</label>
         <input
@@ -10,7 +10,7 @@
           name="name"
           id="name"
           class="form-control"
-          #nameInput
+          ngModel
         />
       </div>
       <div class="form-group">
@@ -19,7 +19,7 @@
           name="description"
           id="description"
           class="form-control"
-          #descriptionInput
+          ngModel
         ></textarea>
       </div>
       <div class="form-group">
@@ -29,17 +29,17 @@
           name="imageUrl"
           id="imageUrl"
           class="form-control"
-          #imageUrlInput
+          ngModel
         />
       </div>
       <div class="form-group">
         <label for="price">Price</label>
         <input
-          type="text"
+          type="number"
           name="price"
           id="price"
           class="form-control"
-          #priceInput
+          ngModel
         />
       </div>
       <button
@@ -48,7 +48,7 @@
         [disabled]="isUploading"
       >
         <span *ngIf="!isUploading">
-          Create
+          {{ isEdit ? 'Edit' : 'Create' }}
         </span>
         <span *ngIf="isUploading" class="spinner-border spinner-border-sm">
           <span class="sr-only">Loading...</span>
